@@ -6,7 +6,7 @@ package Vista;
 
 /**
  *
- * @author manue
+ * @author Santiago Leon (2250617)
  */
 public class UsaProyecto {
     
