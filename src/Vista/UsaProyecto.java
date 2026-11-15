@@ -90,6 +90,7 @@ public static ArrayList<Proyecto> registrarProyecto(ArrayList<Proyecto> datos){
         JOptionPane.showMessageDialog(null, "Proyecto registrado exitosamente: " + codigo);
         return datos;
     }
+//2
 public static String consultarTodosProyectos(ArrayList<Proyecto> datos) {
         if (datos == null || datos.isEmpty()) {
             return "La lista de proyectos está vacía";
@@ -97,6 +98,17 @@ public static String consultarTodosProyectos(ArrayList<Proyecto> datos) {
         String resultado = "--- TODOS LOS PROYECTOS ---\n";
         for (Proyecto p : datos) {
             resultado += p.toString() + "\nFecha de finalización: " + p.determinarFechaFinalizacion() + "\n\n";
+        }
+        return resultado;
+}
+//3
+public static String consultarProyectosEnCurso(ArrayList<Proyecto> datos) {
+        if (datos == null || datos.isEmpty()) return "La lista de proyectos está vacía.";
+        String resultado = "--- PROYECTOS EN CURSO ---\n";
+        for (Proyecto p : datos) {
+            if (p.getEstado().equalsIgnoreCase("EN CURSO")) {
+                resultado += p.toString() + "\nFecha de finalización: " + p.determinarFechaFinalizacion() + "\n\n";
+            }
         }
         return resultado;
     }
