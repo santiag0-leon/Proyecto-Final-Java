@@ -90,3 +90,13 @@ public static ArrayList<Proyecto> registrarProyecto(ArrayList<Proyecto> datos){
         JOptionPane.showMessageDialog(null, "Proyecto registrado exitosamente: " + codigo);
         return datos;
     }
+public static String consultarTodosProyectos(ArrayList<Proyecto> datos) {
+        if (datos == null || datos.isEmpty()) {
+            return "La lista de proyectos está vacía";
+        }
+        String resultado = "--- TODOS LOS PROYECTOS ---\n";
+        for (Proyecto p : datos) {
+            resultado += p.toString() + "\nFecha de finalización: " + p.determinarFechaFinalizacion() + "\n\n";
+        }
+        return resultado;
+    }
