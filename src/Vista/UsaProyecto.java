@@ -4,8 +4,10 @@
  */
 package Vista;
 
+import Modelo.Empleado;
+import Modelo.Empresa;
+import Modelo.PersonaNatural;
 import Modelo.Proyecto;
-import Vista.UsaProyecto.Proyecto;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -195,3 +197,241 @@ public class UsaProyecto extends javax.swing.JFrame {
         resultado += "\n";
         return resultado;
     }
+    
+
+
+
+    //Puntos del 9 al 12 INICIO
+    //9.1
+    public String consultarProyectosDadoNumIDECliente(
+        ArrayList<Proyecto> datos, String numIDECliente) {
+
+        String resultado = "CONSULTA DE PROYECTOS DE UN CLIENTE\n";
+
+        if (datos.isEmpty()) {
+        return resultado + "No hay proyectos registrados.";
+        }
+
+        boolean existe = false;
+
+        for (Proyecto objeto : datos) {
+
+            if (objeto.getSuCliente() != null
+                && objeto.getSuCliente().getNumeroIdentificacion()
+                        .equalsIgnoreCase(numIDECliente)) {
+
+            existe = true;
+
+            resultado += objeto.toString();
+            resultado += "\nFecha de finalización: "
+                    + objeto.determinarFechaFinalizacion();
+            resultado += "\n";
+            }
+        }
+
+        if (!existe) {
+         resultado += "No existen proyectos registrados para ese cliente.";
+        }
+
+          return resultado;
+    }
+    
+    
+    //9.2
+    public String consultarProyectosDadoTipoCliente(
+            ArrayList<Proyecto> datos, String tipoCliente) {
+
+        String resultado = "CONSULTA DE PROYECTOS POR TIPO DE CLIENTE\n";
+
+        if (datos.isEmpty()) {
+            return resultado + "No hay proyectos registrados.";
+        }
+
+        boolean existe = false;
+
+        for (Proyecto objeto : datos) {
+
+            if (objeto.getSuCliente() != null) {
+
+                if ((tipoCliente.equalsIgnoreCase("Empresa")
+                        && objeto.getSuCliente() instanceof Empresa)
+                        || (tipoCliente.equalsIgnoreCase("PersonaNatural")
+                        && objeto.getSuCliente() instanceof PersonaNatural)) {
+
+                    existe = true;
+
+                    resultado += objeto.toString();
+                    resultado += "\nFecha de finalización: "
+                            + objeto.determinarFechaFinalizacion();
+                    resultado += "\n";
+                }
+            }
+        }
+
+        if (!existe) {
+            resultado += "No existen proyectos registrados para ese tipo de cliente.";
+        }
+
+        return resultado;
+    }
+    
+    
+        //10
+    public String registrarIntegranteProyectoDadoCodigo(
+            ArrayList<Proyecto> datos, String codigoProyecto) {
+
+        if (datos.isEmpty()) {
+         return "No hay proyectos registrados.";
+        }
+
+        for (Proyecto objeto : datos) {
+
+         if (objeto.getCodigo().equalsIgnoreCase(codigoProyecto)) {
+
+                String numeroIdentificacion = JOptionPane.showInputDialog(
+                        "Número de identificación:"
+             );
+
+             String nombreCompleto = JOptionPane.showInputDialog(
+                        "Nombre completo:"
+                );
+
+                String tituloProfesional = JOptionPane.showInputDialog(
+                        "Título profesional:"
+                );
+
+                byte aniosExperiencia = Byte.parseByte(
+                      JOptionPane.showInputDialog("Años de experiencia:")
+                );
+
+                Empleado integrante = new Empleado(
+                        numeroIdentificacion,
+                        nombreCompleto,
+                        tituloProfesional,
+                        aniosExperiencia
+                );
+
+                objeto.agregarIntegrante(integrante);
+
+                return "Integrante registrado exitosamente.";
+            }
+    }
+
+    return "No existe un proyecto con el código indicado.";
+}
+    
+    //11
+public String registrarEquipoProyectoDadoCodigo(
+        ArrayList<Proyecto> datos, String codigoProyecto) {
+
+    if (datos.isEmpty()) {
+        return "No hay proyectos registrados.";
+    }
+
+    for (Proyecto objeto : datos) {
+
+        if (objeto.getCodigo().equalsIgnoreCase(codigoProyecto)) {
+
+            ArrayList<Empleado> equipo = new ArrayList<>();
+
+            int opcion;
+
+            do {
+
+                String numeroIdentificacion = JOptionPane.showInputDialog(
+                        "Número de identificación:"
+                );
+
+                String nombreCompleto = JOptionPane.showInputDialog(
+                        "Nombre completo:"
+                );
+
+                String tituloProfesional = JOptionPane.showInputDialog(
+                        "Título profesional:"
+                );
+
+                byte aniosExperiencia = Byte.parseByte(
+                        JOptionPane.showInputDialog("Años de experiencia:")
+                );
+
+                Empleado integrante = new Empleado(
+                        numeroIdentificacion,
+                        nombreCompleto,
+                        tituloProfesional,
+                        aniosExperiencia
+                );
+
+                equipo.add(integrante);
+
+                opcion = JOptionPane.showConfirmDialog(
+                        null,
+                        "¿Desea registrar otro integrante?",
+                        "REGISTRO DE EQUIPO",
+                        JOptionPane.YES_NO_OPTION
+                );
+
+            } while (opcion == JOptionPane.YES_OPTION);
+
+            objeto.setSuEquipo(equipo);
+
+            return "Equipo registrado exitosamente.";
+        }
+    }
+
+    return "No existe un proyecto con el código indicado.";
+}
+
+//12
+public void retirarIntegranteProyectoDadoCodigo(
+        ArrayList<Proyecto> datos, String codigoProyecto) {
+
+    if (datos.isEmpty()) {
+
+        JOptionPane.showMessageDialog(
+                null, "No hay proyectos registrados."
+        );
+
+        return;
+    }
+
+    for (Proyecto objeto : datos) {
+
+        if (objeto.getCodigo().equalsIgnoreCase(codigoProyecto)) {
+
+            String identificacion = JOptionPane.showInputDialog(
+                    "Ingrese el número de identificación del integrante:"
+            );
+
+            Empleado eliminado = objeto.eliminarIntegrante(identificacion);
+
+            if (eliminado != null) {
+
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Integrante retirado exitosamente:\n" + eliminado
+                );
+
+            } else {
+
+                JOptionPane.showMessageDialog(
+                        null,
+                        "No se encontró el integrante en el equipo del proyecto."
+                );
+            }
+
+            return;
+        }
+    }
+
+    JOptionPane.showMessageDialog(
+            null, "No existe un proyecto con el código indicado."
+    );
+}
+}
+    
+    //FIN 9-12
+
+
+
+
+
