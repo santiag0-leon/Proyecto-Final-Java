@@ -8,7 +8,7 @@ import java.io.Serializable;
  *
  * @author Eltip
  */
-public final class PersonaNatural extends Clienteimplements Serializable {
+public final class PersonaNatural extends Cliente implements Serializable {
     private String numeroTelefono;
     private String correoElectronico;
 
