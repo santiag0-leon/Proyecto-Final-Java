@@ -3,12 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Modelo;
-
+import java.io.Serializable;
 /**
  *
  * @author Eltip
  */
-public class Contacto {
+public class Contacto implements Serializable {
     private String nombreCompleto; 
     private String cargo;
     private String numeroTelefono;
