@@ -3,12 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Modelo;
-
+import java.io.Serializable;
 /**
  *
  * @author Eltip
  */
-public final class PersonaNatural extends Cliente {
+public final class PersonaNatural extends Clienteimplements Serializable {
     private String numeroTelefono;
     private String correoElectronico;
 
