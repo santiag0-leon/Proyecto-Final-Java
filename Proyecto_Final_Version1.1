@@ -1,0 +1,348 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package Vista;
+
+import Modelo.Proyecto;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author santiago leon (2250617)
+ */ 
+
+public class UsaProyecto extends javax.swing.JFrame {
+
+    private ArrayList<Proyecto> losProyectos = new ArrayList<>();
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(UsaProyecto.class.getName());
+
+    public UsaProyecto() {
+        initComponents();
+    }                        
+
+    public static void main(String args[]) { 
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(UsaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(UsaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(UsaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(UsaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new UsaProyecto().setVisible(true);
+            }
+        });
+    }
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jTextFieldTitulo = new javax.swing.JTextField();
+        jTextFieldFechaInicio = new javax.swing.JTextField();
+        jTextFieldDuracionEstimada = new javax.swing.JTextField();
+        jComboBoxUnidadDuracion = new javax.swing.JComboBox<>();
+        jButtonRegistrar = new javax.swing.JButton();
+        jButtonConsultarTodos = new javax.swing.JButton();
+        jButtonConsultarEnCurso = new javax.swing.JButton();
+        jButtonConsultarPrimero = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaResultados = new javax.swing.JTextArea();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTextFieldTitulo.setText("Text titulo");
+
+        jTextFieldFechaInicio.setText("Fecha inicio");
+        jTextFieldFechaInicio.addActionListener(this::jTextFieldFechaInicioActionPerformed);
+
+        jTextFieldDuracionEstimada.setText("Duracion");
+        jTextFieldDuracionEstimada.addActionListener(this::jTextFieldDuracionEstimadaActionPerformed);
+
+        jComboBoxUnidadDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dias", "Semanas", "Meses", "Años" }));
+        jComboBoxUnidadDuracion.addActionListener(this::jComboBoxUnidadDuracionActionPerformed);
+
+        jButtonRegistrar.setText("Registrar");
+        jButtonRegistrar.addActionListener(this::jButtonRegistrarActionPerformed);
+
+        jButtonConsultarTodos.setText("Consultar Todos");
+        jButtonConsultarTodos.addActionListener(this::jButtonConsultarTodosActionPerformed);
+
+        jButtonConsultarEnCurso.setText("Consulta en Curso");
+        jButtonConsultarEnCurso.addActionListener(this::jButtonConsultarEnCursoActionPerformed);
+
+        jButtonConsultarPrimero.setText("Consultar Primero");
+        jButtonConsultarPrimero.addActionListener(this::jButtonConsultarPrimeroActionPerformed);
+
+        jTextAreaResultados.setColumns(20);
+        jTextAreaResultados.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaResultados);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTextFieldTitulo)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTextFieldFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonRegistrar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonConsultarTodos)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonConsultarEnCurso)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonConsultarPrimero))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTextFieldDuracionEstimada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(jComboBoxUnidadDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jTextFieldFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldDuracionEstimada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxUnidadDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonRegistrar)
+                    .addComponent(jButtonConsultarTodos)
+                    .addComponent(jButtonConsultarEnCurso)
+                    .addComponent(jButtonConsultarPrimero))
+                .addContainerGap(64, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBoxUnidadDuracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxUnidadDuracionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxUnidadDuracionActionPerformed
+
+    private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
+        // TODO add your handling code here:
+        losProyectos = registrarProyecto(losProyectos);
+    }//GEN-LAST:event_jButtonRegistrarActionPerformed
+
+    private void jButtonConsultarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarTodosActionPerformed
+        // TODO add your handling code here:
+        jTextAreaResultados.setText(consultarTodosProyectos(losProyectos));
+    }//GEN-LAST:event_jButtonConsultarTodosActionPerformed
+
+    private void jTextFieldFechaInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFechaInicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldFechaInicioActionPerformed
+
+    private void jTextFieldDuracionEstimadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDuracionEstimadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDuracionEstimadaActionPerformed
+
+    private void jButtonConsultarPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarPrimeroActionPerformed
+        // TODO add your handling code here:
+        jTextAreaResultados.setText(consultarPrimerProyecto(losProyectos));
+    }//GEN-LAST:event_jButtonConsultarPrimeroActionPerformed
+
+    private void jButtonConsultarEnCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarEnCursoActionPerformed
+        // TODO add your handling code here:
+        jTextAreaResultados.setText(consultarProyectosEnCurso(losProyectos));
+    }//GEN-LAST:event_jButtonConsultarEnCursoActionPerformed
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonConsultarEnCurso;
+    private javax.swing.JButton jButtonConsultarPrimero;
+    private javax.swing.JButton jButtonConsultarTodos;
+    private javax.swing.JButton jButtonRegistrar;
+    private javax.swing.JComboBox<String> jComboBoxUnidadDuracion;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextAreaResultados;
+    private javax.swing.JTextField jTextFieldDuracionEstimada;
+    private javax.swing.JTextField jTextFieldFechaInicio;
+    private javax.swing.JTextField jTextFieldTitulo;
+    // End of variables declaration//GEN-END:variables
+
+//1
+      public ArrayList<Proyecto> registrarProyecto(ArrayList<Proyecto> losProyectos){
+        boolean entradaInvalida = false;
+        String msgEntrasInvalidas = "Causas:\n";
+
+        String codigo = generarCodigoProyecto(losProyectos);
+        String titulo = null;
+        LocalDate fechaInicio = null;
+        String unidadDuracion = null;
+        byte duracionEstimada = 0;
+
+        titulo = jTextFieldTitulo.getText();
+        if(titulo.isEmpty()){
+            msgEntrasInvalidas += "Título: entrada inválida, valor vacío \n";
+            entradaInvalida = true;
+        } else if(titulo.isBlank()){
+            msgEntrasInvalidas += "Título: entrada inválida, valor vacío \n";
+            entradaInvalida = true;
+        } else if(titulo.length() < 20){
+            msgEntrasInvalidas += "Título: entrada inválida, longitud incorrecta \n";
+            entradaInvalida = true;
+        } else if(titulo.length() > 100){
+            msgEntrasInvalidas += "Título: entrada inválida, longitud incorrecta \n";
+            entradaInvalida = true;
+        }
+
+        try{
+            fechaInicio = LocalDate.parse(jTextFieldFechaInicio.getText());
+        } catch(DateTimeException ex){
+            msgEntrasInvalidas += "Fecha de inicio: entrada inválida, formato incorrecto " + ex.getMessage() + "\n";
+            entradaInvalida = true;
+        }
+
+        unidadDuracion = jComboBoxUnidadDuracion.getSelectedItem().toString().toUpperCase();
+        if(!unidadDuracion.equals("SEMANAS") && !unidadDuracion.equals("MESES") && !unidadDuracion.equals("AÑOS")){
+            msgEntrasInvalidas += "     - Unidad de duración: entrada inválida, valor incorrecto.\n";
+            entradaInvalida = true;
+        }
+
+        try{
+            duracionEstimada = Byte.parseByte(jTextFieldDuracionEstimada.getText());
+            switch(unidadDuracion){
+                case "SEMANAS":
+                    if(duracionEstimada < 1){
+                        msgEntrasInvalidas += "Duración estimada: entrada inválida, valor incorrecto \n";
+                        entradaInvalida = true;
+                    } else if(duracionEstimada > 3){
+                        msgEntrasInvalidas += "Duración estimada: entrada inválida, valor incorrecto \n";
+                        entradaInvalida = true;
+                    }
+                    break;
+                case "MESES":
+                    if(duracionEstimada < 1){
+                        msgEntrasInvalidas += "Duración estimada: entrada inválida, valor incorrecto \n";
+                        entradaInvalida = true;
+                    } else if(duracionEstimada > 35){
+                        msgEntrasInvalidas += "Duración estimada: entrada inválida, valor incorrecto \n";
+                        entradaInvalida = true;
+                    } else if(duracionEstimada == 12){
+                        msgEntrasInvalidas += "Duración estimada: entrada inválida, valor incorrecto \n";
+                        entradaInvalida = true;
+                    } else if(duracionEstimada == 24){
+                        msgEntrasInvalidas += "Duración estimada: entrada inválida, valor incorrecto \n";
+                        entradaInvalida = true;
+                    }
+                    break;
+                case "AÑOS":
+                    if(duracionEstimada < 1){
+                        msgEntrasInvalidas += "Duración estimada: entrada inválida, valor incorrecto \n";
+                        entradaInvalida = true;
+                    }
+                    break;
+            }
+        } catch(NumberFormatException ex){
+            msgEntrasInvalidas += "Duración estimada: entrada inválida, formato incorrecto " + ex.getMessage() + "\n";
+            entradaInvalida = true;
+        }
+
+        Proyecto objeto = null;
+        if(entradaInvalida){
+            JOptionPane.showMessageDialog(null,"Operación fallida \n" + msgEntrasInvalidas, "REGISTRO", JOptionPane.ERROR_MESSAGE);
+            return losProyectos;
+        }
+
+        objeto = new Proyecto(codigo, titulo, fechaInicio, unidadDuracion, duracionEstimada, null, null);
+
+        losProyectos.add(objeto);
+        JOptionPane.showMessageDialog(null,"Operación exitosa", "REGISTRO", JOptionPane.INFORMATION_MESSAGE);
+
+        return losProyectos;
+    }
+
+    public static String generarCodigoProyecto(ArrayList<Proyecto> losProyectos){
+        int anio = LocalDate.now().getYear();
+        int consecutivo = losProyectos.size() + 1;
+        String codigo = "";
+        if(consecutivo < 10){
+            codigo = anio + "-00" + consecutivo;
+        } else if(consecutivo < 100){
+            codigo = anio + "-0" + consecutivo;
+        } else {
+            codigo = anio + "-" + consecutivo;
+        }
+        return codigo;
+    }
+
+    //2
+   public String consultarTodosProyectos(ArrayList<Proyecto> losProyectos){
+        String resultado = "CONSULTA DE TODOS LOS PROYECTOS\n";
+        if(losProyectos.isEmpty()) {
+            resultado += "No hay proyectos registrados.";
+            return resultado;
+        }
+        for(Proyecto objeto : losProyectos){
+            resultado += objeto.toString();
+            resultado += ", fecha de finalización=" + objeto.determinarFechaFinalizacion();
+            resultado += "\n";
+        }
+        return resultado;
+    }
+
+    //3
+    
+    public String consultarProyectosEnCurso(ArrayList<Proyecto> losProyectos){
+        String resultado = "CONSULTA DE PROYECTOS EN CURSO\n";
+        if(losProyectos.isEmpty()) {
+            resultado += "No hay proyectos registrados.";
+            return resultado;
+        }
+        boolean proyectoExiste = false;
+        for(Proyecto objeto : losProyectos){
+            if(objeto.getEstado().toUpperCase().equals("EN CURSO")){
+                proyectoExiste = true;
+                resultado += objeto.toString();
+                resultado += ", fecha de finalización=" + objeto.determinarFechaFinalizacion();
+                resultado += "\n";
+            }
+        }
+        if(!proyectoExiste) {
+            resultado += "No hay proyectos en curso registrados.";
+        }
+        return resultado;
+    }
+
+    //4
+    public String consultarPrimerProyecto(ArrayList<Proyecto> losProyectos){
+        String resultado = "CONSULTA DEL PRIMER PROYECTO\n";
+        if(losProyectos.isEmpty()) {
+            resultado += "No hay proyectos registrados.";
+            return resultado;
+        }
+        Proyecto objeto = losProyectos.getFirst();
+        resultado += objeto.toString();
+        resultado += ", fecha de finalización=" + objeto.determinarFechaFinalizacion();
+        resultado += "\n";
+
+        return resultado;
+    } 
+}
