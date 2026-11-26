@@ -21,7 +21,7 @@ jobs:
       - name: Compilar
         run: |
           mkdir out
-          javac -cp lib/junit.jar -d out Modelo/*.java test/Modelo/*.java
+          javac -encoding UTF-8 -cp lib/junit.jar -d out $(find src/Modelo test -name "*.java")
 
       - name: Ejecutar pruebas
         run: java -jar lib/junit.jar execute -cp out --scan-classpath
